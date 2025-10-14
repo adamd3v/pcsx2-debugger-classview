@@ -239,6 +239,11 @@ target_sources(pcsx2-qt PRIVATE
 	Debugger/Memory/SavedAddressesView.cpp
 	Debugger/Memory/SavedAddressesView.h
 	Debugger/Memory/SavedAddressesView.ui
+	Debugger/Structures/StructureModel.cpp
+	Debugger/Structures/StructureModel.h
+	Debugger/Structures/StructureView.cpp
+	Debugger/Structures/StructureView.h
+	Debugger/Structures/StructureView.ui
 	Debugger/SymbolTree/NewSymbolDialogs.cpp
 	Debugger/SymbolTree/NewSymbolDialogs.h
 	Debugger/SymbolTree/NewSymbolDialog.ui
