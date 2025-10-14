@@ -8,6 +8,7 @@
 #include "Debugger/ModuleView.h"
 #include "Debugger/RegisterView.h"
 #include "Debugger/StackView.h"
+#include "Debugger/Structures/StructureView.h"
 #include "Debugger/ThreadView.h"
 #include "Debugger/Breakpoints/BreakpointView.h"
 #include "Debugger/Memory/MemorySearchView.h"
@@ -50,6 +51,7 @@ const std::map<std::string, DockTables::DebuggerViewDescription> DockTables::DEB
 	DEBUGGER_VIEW(RegisterView, QT_TRANSLATE_NOOP("DebuggerView", "Registers"), TOP_LEFT),
 	DEBUGGER_VIEW(SavedAddressesView, QT_TRANSLATE_NOOP("DebuggerView", "Saved Addresses"), BOTTOM_MIDDLE),
 	DEBUGGER_VIEW(StackView, QT_TRANSLATE_NOOP("DebuggerView", "Stack"), BOTTOM_MIDDLE),
+	DEBUGGER_VIEW(StructureView, QT_TRANSLATE_NOOP("DebuggerView", "Structures"), BOTTOM_MIDDLE),
 	DEBUGGER_VIEW(ThreadView, QT_TRANSLATE_NOOP("DebuggerView", "Threads"), BOTTOM_MIDDLE),
 };
 
@@ -80,6 +82,7 @@ const std::vector<DockTables::DefaultDockLayout> DockTables::DEFAULT_DOCK_LAYOUT
 			{"RegisterView", DefaultDockGroup::TOP_LEFT},
 			{"FunctionTreeView", DefaultDockGroup::TOP_LEFT},
 			{"MemorySearchView", DefaultDockGroup::TOP_LEFT},
+			{"StructureView", DefaultDockGroup::BOTTOM}
 		},
 		.toolbars = {
 			"toolBarDebug",
@@ -110,7 +113,8 @@ const std::vector<DockTables::DefaultDockLayout> DockTables::DEFAULT_DOCK_LAYOUT
 			/* DefaultDockGroup::TOP_LEFT */
 			{"RegisterView", DefaultDockGroup::TOP_LEFT},
 			{"FunctionTreeView", DefaultDockGroup::TOP_LEFT},
-			{"MemorySearchView", DefaultDockGroup::TOP_LEFT},
+			{"MemorySearchView", DefaultDockGroup::TOP_LEFT}, 
+			{"StructureView", DefaultDockGroup::BOTTOM}
 		},
 		.toolbars = {
 			"toolBarDebug",
