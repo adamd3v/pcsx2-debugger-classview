@@ -37,6 +37,9 @@
     <Filter Include="Debugger\Memory">
       <UniqueIdentifier>{63790c94-0680-417d-926c-a8b74118f80f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Debugger\Structures">
+      <UniqueIdentifier>{88552f04-635e-4a3a-9a0b-327892498ae7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\pcsx2\windows\PCSX2.rc" />
@@ -506,6 +509,8 @@
     <ClCompile Include="Debugger\ModuleModel.cpp">
       <Filter>Debugger</Filter>
     </ClCompile>
+    <ClCompile Include="Debugger\Structures\StructureView.cpp" />
+    <ClCompile Include="$(IntDir)Debugger\Structures\moc_StructureView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Manifest Include="..\pcsx2\windows\PCSX2.manifest">
@@ -528,6 +533,7 @@
     <ClInclude Include="Debugger\DebuggerSettingsManager.h">
       <Filter>Debugger</Filter>
     </ClInclude>
+    <ClInclude Include="Debugger\Structures\StructureView.h" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MainWindow.h" />
@@ -1011,6 +1017,9 @@
     </QtUi>
     <QtUi Include="Debugger\ModuleView.ui">
       <Filter>Debugger</Filter>
+    </QtUi>
+    <QtUi Include="Debugger\Structures\StructureView.ui">
+      <Filter>Debugger\Structures</Filter>
     </QtUi>
   </ItemGroup>
   <ItemGroup>

@@ -50,7 +50,7 @@
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(SolutionDir)3rdparty\rapidjson\include</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(SolutionDir)pcsx2</AdditionalIncludeDirectories>
       <!-- Needed for moc pch -->
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(ProjectDir)\Settings;$(ProjectDir)\GameList;$(ProjectDir)\Tools\InputRecording;$(ProjectDir)\Debugger;$(ProjectDir)\Debugger\Breakpoints;$(ProjectDir)\Debugger\Docking;$(ProjectDir)\Debugger\Memory;$(ProjectDir)\Debugger\SymbolTree</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(ProjectDir)\Settings;$(ProjectDir)\GameList;$(ProjectDir)\Tools\InputRecording;$(ProjectDir)\Debugger;$(ProjectDir)\Debugger\Breakpoints;$(ProjectDir)\Debugger\Docking;$(ProjectDir)\Debugger\Memory;$(ProjectDir)\Debugger\Structures;$(ProjectDir)\Debugger\SymbolTree</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PrecompiledHeader.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>PrecompiledHeader.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -90,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ColorPickerButton.cpp" />
+    <ClCompile Include="Debugger\Structures\StructureView.cpp" />
     <ClCompile Include="Debugger\SymbolTree\NewSymbolDialogs.cpp" />
     <ClCompile Include="Debugger\SymbolTree\SymbolTreeDelegates.cpp" />
     <ClCompile Include="Debugger\SymbolTree\SymbolTreeLocation.cpp" />
@@ -212,6 +213,7 @@
     <QtMoc Include="Debugger\SymbolTree\SymbolTreeNode.h" />
     <QtMoc Include="Debugger\SymbolTree\SymbolTreeViews.h" />
     <QtMoc Include="Debugger\SymbolTree\TypeString.h" />
+    <QtMoc Include="Debugger\Structures\StructureView.h" />
     <ClInclude Include="Settings\ControllerSettingWidgetBinder.h" />
     <QtMoc Include="Settings\FolderSettingsWidget.h" />
     <QtMoc Include="Settings\DebugAnalysisSettingsWidget.h" />
@@ -337,6 +339,7 @@
     <ClCompile Include="$(IntDir)Debugger\SymbolTree\moc_SymbolTreeNode.cpp" />
     <ClCompile Include="$(IntDir)Debugger\SymbolTree\moc_SymbolTreeViews.cpp" />
     <ClCompile Include="$(IntDir)Debugger\SymbolTree\moc_TypeString.cpp" />
+    <ClCompile Include="$(IntDir)Debugger\Structures\moc_StructureView.cpp" />
     <ClCompile Include="$(IntDir)GameList\moc_GameListModel.cpp" />
     <ClCompile Include="$(IntDir)GameList\moc_GameListRefreshThread.cpp" />
     <ClCompile Include="$(IntDir)GameList\moc_GameListWidget.cpp" />
@@ -376,6 +379,7 @@
     <QtUi Include="Debugger\SymbolTree\SymbolTreeView.ui" />
     <QtUi Include="Debugger\ModuleView.ui" />
     <QtUi Include="Debugger\ThreadView.ui" />
+    <QtUi Include="Debugger\Structures\StructureView.ui" />
     <QtUi Include="GameList\EmptyGameListWidget.ui" />
     <QtUi Include="GameList\GameListWidget.ui" />
     <QtUi Include="MainWindow.ui" />
