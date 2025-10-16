@@ -3,6 +3,7 @@
 #include "ui_StructureView.h"
 
 #include "DebuggerView.h"
+#include "StructureModel.h"
 
 class StructureView : public DebuggerView
 {
@@ -13,6 +14,7 @@ public:
 
 	void openContextMenu(QPoint pos);
 	void contextNew();
+	void contextEdit();
 
 	void onDoubleClick(const QModelIndex& index);
 
@@ -20,4 +22,6 @@ public:
 
 private:
 	Ui::StructureView m_ui;
+
+	StructureModel* m_model;
 };

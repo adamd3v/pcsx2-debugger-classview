@@ -25,6 +25,12 @@
      <height>301</height>
     </rect>
    </property>
+   <property name="maximumSize">
+    <size>
+     <width>381</width>
+     <height>301</height>
+    </size>
+   </property>
   </widget>
  </widget>
  <resources/>
