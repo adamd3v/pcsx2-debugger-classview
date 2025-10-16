@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>309</height>
+    <height>490</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>260</y>
+     <y>450</y>
      <width>341</width>
      <height>32</height>
     </rect>
@@ -35,7 +35,7 @@
      <x>20</x>
      <y>10</y>
      <width>351</width>
-     <height>241</height>
+     <height>441</height>
     </rect>
    </property>
    <property name="title">
@@ -72,21 +72,8 @@
       <x>20</x>
       <y>50</y>
       <width>311</width>
-      <height>171</height>
+      <height>371</height>
      </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="addIntButton">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>60</y>
-      <width>79</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Add Int</string>
     </property>
    </widget>
   </widget>
