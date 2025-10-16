@@ -18,8 +18,6 @@ public:
 	void assignStructure(const Structure& structure);
 
 	void accepted();
-	void onStructNameChange(const QString& value);
-	void clickedAddIntButton(bool checked = false);
 
 private:
 	Ui::StructureDialog m_ui;

@@ -12,7 +12,6 @@ StructureDialog::StructureDialog(StructureModel& model, QWidget* parent)
 	m_ui.setupUi(this);
 
 	connect(m_ui.buttonBox, &QDialogButtonBox::accepted, this, &StructureDialog::accepted);
-	connect(m_ui.addIntButton, &QPushButton::clicked, this, &StructureDialog::clickedAddIntButton);
 }
 
 void StructureDialog::assignStructure(const Structure& structure)
@@ -41,15 +40,4 @@ void StructureDialog::accepted()
 	m_model.insertStructureRows(0, 1, {m_structure});
 
 	QDialog::accept();
-}
-
-void StructureDialog::clickedAddIntButton(bool checked)
-{
-	Structure::Field field;
-	field.name = "m_value";
-	field.size = sizeof(s32);
-
-	m_structure.st_size += field.size;
-
-	m_structure.fields.push_back(field);
 }
