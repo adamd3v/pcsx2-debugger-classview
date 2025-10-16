@@ -155,6 +155,7 @@
     <ClCompile Include="DebugTools\MipsAssembler.cpp" />
     <ClCompile Include="DebugTools\MipsAssemblerTables.cpp" />
     <ClCompile Include="DebugTools\MipsStackWalk.cpp" />
+    <ClCompile Include="DebugTools\Structure.cpp" />
     <ClCompile Include="DebugTools\SymbolGuardian.cpp" />
     <ClCompile Include="DebugTools\SymbolImporter.cpp" />
     <ClCompile Include="DEV9\AdapterUtils.cpp" />
@@ -604,6 +605,7 @@
     <ClInclude Include="DebugTools\MipsAssembler.h" />
     <ClInclude Include="DebugTools\MipsAssemblerTables.h" />
     <ClInclude Include="DebugTools\MipsStackWalk.h" />
+    <ClInclude Include="DebugTools\Structure.h" />
     <ClInclude Include="DebugTools\SymbolGuardian.h" />
     <ClInclude Include="DebugTools\SymbolImporter.h" />
     <ClInclude Include="DEV9\AdapterUtils.h" />

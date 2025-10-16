@@ -509,8 +509,24 @@
     <ClCompile Include="Debugger\ModuleModel.cpp">
       <Filter>Debugger</Filter>
     </ClCompile>
-    <ClCompile Include="Debugger\Structures\StructureView.cpp" />
-    <ClCompile Include="$(IntDir)Debugger\Structures\moc_StructureView.cpp" />
+    <ClCompile Include="Debugger\Structures\StructureDialog.cpp">
+      <Filter>Debugger\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="Debugger\Structures\StructureModel.cpp">
+      <Filter>Debugger\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="Debugger\Structures\StructureView.cpp">
+      <Filter>Debugger\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="$(IntDir)Debugger\Structures\moc_StructureView.cpp">
+      <Filter>moc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(IntDir)Debugger\Structures\moc_StructureDialog.cpp">
+      <Filter>moc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(IntDir)Debugger\Structures\moc_StructureModel.cpp">
+      <Filter>moc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Manifest Include="..\pcsx2\windows\PCSX2.manifest">
@@ -533,7 +549,6 @@
     <ClInclude Include="Debugger\DebuggerSettingsManager.h">
       <Filter>Debugger</Filter>
     </ClInclude>
-    <ClInclude Include="Debugger\Structures\StructureView.h" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MainWindow.h" />
@@ -753,6 +768,15 @@
     </QtMoc>
     <QtMoc Include="Debugger\ModuleModel.h">
       <Filter>Debugger</Filter>
+    </QtMoc>
+    <QtMoc Include="Debugger\Structures\StructureView.h">
+      <Filter>Debugger\Structures</Filter>
+    </QtMoc>
+    <QtMoc Include="Debugger\Structures\StructureDialog.h">
+      <Filter>Debugger\Structures</Filter>
+    </QtMoc>
+    <QtMoc Include="Debugger\Structures\StructureModel.h">
+      <Filter>Debugger\Structures</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -1019,6 +1043,9 @@
       <Filter>Debugger</Filter>
     </QtUi>
     <QtUi Include="Debugger\Structures\StructureView.ui">
+      <Filter>Debugger\Structures</Filter>
+    </QtUi>
+    <QtUi Include="Debugger\Structures\StructureDialog.ui">
       <Filter>Debugger\Structures</Filter>
     </QtUi>
   </ItemGroup>

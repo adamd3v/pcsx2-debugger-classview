@@ -90,6 +90,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ColorPickerButton.cpp" />
+    <ClCompile Include="Debugger\Structures\StructureDialog.cpp" />
+    <ClCompile Include="Debugger\Structures\StructureModel.cpp" />
     <ClCompile Include="Debugger\Structures\StructureView.cpp" />
     <ClCompile Include="Debugger\SymbolTree\NewSymbolDialogs.cpp" />
     <ClCompile Include="Debugger\SymbolTree\SymbolTreeDelegates.cpp" />
@@ -214,6 +216,8 @@
     <QtMoc Include="Debugger\SymbolTree\SymbolTreeViews.h" />
     <QtMoc Include="Debugger\SymbolTree\TypeString.h" />
     <QtMoc Include="Debugger\Structures\StructureView.h" />
+    <QtMoc Include="Debugger\Structures\StructureDialog.h" />
+    <QtMoc Include="Debugger\Structures\StructureModel.h" />
     <ClInclude Include="Settings\ControllerSettingWidgetBinder.h" />
     <QtMoc Include="Settings\FolderSettingsWidget.h" />
     <QtMoc Include="Settings\DebugAnalysisSettingsWidget.h" />
@@ -340,6 +344,8 @@
     <ClCompile Include="$(IntDir)Debugger\SymbolTree\moc_SymbolTreeViews.cpp" />
     <ClCompile Include="$(IntDir)Debugger\SymbolTree\moc_TypeString.cpp" />
     <ClCompile Include="$(IntDir)Debugger\Structures\moc_StructureView.cpp" />
+    <ClCompile Include="$(IntDir)Debugger\Structures\moc_StructureModel.cpp" />
+    <ClCompile Include="$(IntDir)Debugger\Structures\moc_StructureDialog.cpp" />
     <ClCompile Include="$(IntDir)GameList\moc_GameListModel.cpp" />
     <ClCompile Include="$(IntDir)GameList\moc_GameListRefreshThread.cpp" />
     <ClCompile Include="$(IntDir)GameList\moc_GameListWidget.cpp" />
@@ -380,6 +386,7 @@
     <QtUi Include="Debugger\ModuleView.ui" />
     <QtUi Include="Debugger\ThreadView.ui" />
     <QtUi Include="Debugger\Structures\StructureView.ui" />
+    <QtUi Include="Debugger\Structures\StructureDialog.ui" />
     <QtUi Include="GameList\EmptyGameListWidget.ui" />
     <QtUi Include="GameList\GameListWidget.ui" />
     <QtUi Include="MainWindow.ui" />
