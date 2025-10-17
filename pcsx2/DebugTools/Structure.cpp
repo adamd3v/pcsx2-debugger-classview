@@ -2,7 +2,7 @@
 
 #include <variant>
 
-std::map<std::string, Structure> CStructure::s_structures;
+std::map<std::string, Structure> CStructure::s_structureMap;
 
 Structure::Structure()
 {
@@ -31,7 +31,7 @@ void CStructure::addStructure(const Structure& structure)
 
 	fullClassName.append(structure.st_class);
 
-	s_structures[fullClassName] = structure;
+	s_structureMap[fullClassName] = structure;
 }
 
 void CStructure::removeStructure(const Structure& structure)
@@ -49,7 +49,7 @@ void CStructure::removeStructure(const Structure& structure)
 
 	fullClassName.append(structure.st_class);
 
-	s_structures.erase(fullClassName);
+	s_structureMap.erase(fullClassName);
 }
 
 void CStructure::assignAddress(Structure& structure, const u32 address)
@@ -59,7 +59,7 @@ void CStructure::assignAddress(Structure& structure, const u32 address)
 
 void CStructure::clearAllStructures()
 {
-	s_structures.clear();
+	s_structureMap.clear();
 }
 
 void CStructure::clearAllFields(Structure& structure)
@@ -68,6 +68,16 @@ void CStructure::clearAllFields(Structure& structure)
 		return;
 
 	structure.fields.clear();
+}
+
+std::vector<Structure> CStructure::getStructures()
+{
+	std::vector<Structure> structures;
+
+	for (auto pair : s_structureMap)
+		structures.push_back(pair.second);
+
+	return structures;
 }
 
 bool CStructure::isAddressValid(const u32 address)
