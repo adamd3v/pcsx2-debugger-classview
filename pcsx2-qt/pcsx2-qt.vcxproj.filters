@@ -40,6 +40,9 @@
     <Filter Include="Debugger\Structures">
       <UniqueIdentifier>{88552f04-635e-4a3a-9a0b-327892498ae7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Debugger\Structures\Fields">
+      <UniqueIdentifier>{08e1fcb8-9026-4344-87f9-ab113c3b878d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\pcsx2\windows\PCSX2.rc" />
@@ -548,6 +551,9 @@
     </ClInclude>
     <ClInclude Include="Debugger\DebuggerSettingsManager.h">
       <Filter>Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="Debugger\Structures\Fields\StructureFieldView.h">
+      <Filter>Debugger\Structures\Fields</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

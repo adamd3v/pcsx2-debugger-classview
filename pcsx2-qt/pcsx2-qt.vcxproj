@@ -218,6 +218,7 @@
     <QtMoc Include="Debugger\Structures\StructureView.h" />
     <QtMoc Include="Debugger\Structures\StructureDialog.h" />
     <QtMoc Include="Debugger\Structures\StructureModel.h" />
+    <ClInclude Include="Debugger\Structures\Fields\StructureFieldView.h" />
     <ClInclude Include="Settings\ControllerSettingWidgetBinder.h" />
     <QtMoc Include="Settings\FolderSettingsWidget.h" />
     <QtMoc Include="Settings\DebugAnalysisSettingsWidget.h" />
