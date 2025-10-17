@@ -15,6 +15,7 @@ public:
 	void openContextMenu(QPoint pos);
 	void contextNew();
 	void contextEdit();
+	void contextDelete();
 
 	void onDoubleClick(const QModelIndex& index);
 

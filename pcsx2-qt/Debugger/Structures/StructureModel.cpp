@@ -1,4 +1,6 @@
 #include "StructureModel.h"
+
+#include "QtHost.h"
 #include "QtUtils.h"
 
 #include "DebugTools/Structure.h"
@@ -6,7 +8,7 @@
 StructureModel::StructureModel(QObject* parent)
 	: QAbstractTableModel(parent)
 {
-
+	connect(this, &StructureModel::dataChanged, this, &StructureModel::refreshData);
 }
 
 int StructureModel::rowCount(const QModelIndex& parent) const
@@ -22,6 +24,15 @@ int StructureModel::columnCount(const QModelIndex& parent) const
 void StructureModel::refreshData()
 {
 	const QPointer<StructureModel> model(this);
+
+	QtHost::RunOnUIThread([model]() mutable {
+		if (!model)
+			return;
+
+		model->beginResetModel();
+		model->m_structures = CStructure::getStructures();
+		model->endResetModel();
+	});
 }
 
 QVariant StructureModel::data(const QModelIndex& index, int role) const
@@ -76,6 +87,25 @@ bool StructureModel::insertStructureRows(int row, int count, std::vector<Structu
 
 	endInsertRows();
 	return true;
+}
+
+bool StructureModel::removeRows(int row, int count, const QModelIndex& index)
+{
+	const size_t begin_index = static_cast<size_t>(row);
+	const size_t end_index = static_cast<size_t>(row + count);
+
+	if (end_index > m_structures.size())
+		return false;
+
+	beginRemoveRows(index, row, row + count - 1);
+	
+	for (size_t i = begin_index; i < end_index; i++)
+	{
+		auto structure = m_structures.at(i);
+		CStructure::removeStructure(structure);
+	}
+	
+	endRemoveRows();
 }
 
 bool StructureModel::setData(const QModelIndex& index, const QVariant& value, int role) 

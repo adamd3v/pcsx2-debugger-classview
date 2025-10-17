@@ -35,9 +35,10 @@ public:
 	QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
 	QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
 	bool setData(const QModelIndex& index, const QVariant& value, int role);
+	bool insertStructureRows(int row, int count, std::vector<Structure> structures, const QModelIndex& index = QModelIndex());
+	bool removeRows(int row, int count, const QModelIndex& index = QModelIndex()) override;
 
 	void refreshData();
-	bool insertStructureRows(int row, int count, std::vector<Structure> structures, const QModelIndex& index = QModelIndex());
 
 	Structure at(const int index) const { return m_structures.at(index); }
 

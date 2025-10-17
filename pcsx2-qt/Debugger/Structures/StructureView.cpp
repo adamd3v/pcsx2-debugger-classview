@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QTabBar>
+#include <QtWidgets/QMessageBox>
 #include <QtGui/QPainter>
 
 #include "StructureView.h"
@@ -36,8 +37,10 @@ void StructureView::openContextMenu(QPoint pos)
 	{
 		QAction* editAction = menu->addAction(tr("Edit Structure"));
 		connect(editAction, &QAction::triggered, this, &StructureView::contextEdit);
-	}
 
+		QAction* deleteAction = menu->addAction(tr("Delete Structure"));
+		connect(deleteAction, &QAction::triggered, this, &StructureView::contextDelete);
+	}
 
 	menu->popup(m_ui.tableView->viewport()->mapToGlobal(pos));
 }
@@ -67,6 +70,34 @@ void StructureView::contextEdit()
 	dialog->setWindowTitle("Edit Structure");
 	dialog->setAttribute(Qt::WA_DeleteOnClose);
 	dialog->show();
+}
+
+void StructureView::contextDelete()
+{
+	QMessageBox confirmBox;
+	confirmBox.setIcon(QMessageBox::Warning);
+	confirmBox.setText("This action cannot be undone.");
+	confirmBox.setInformativeText("Do you wish to delete this structure?");
+	confirmBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+
+	int choice = confirmBox.exec();
+
+	if (choice == QMessageBox::No)
+		return;
+
+	const QItemSelectionModel* selection = m_ui.tableView->selectionModel();
+
+	if (!selection->hasSelection())
+		return;
+
+	QModelIndexList indices = selection->selectedIndexes();
+
+	std::set<int> rows;
+	for (QModelIndex index : indices)
+		rows.emplace(index.row());
+
+	for (auto row = rows.rbegin(); row != rows.rend(); row++)
+		m_model->removeRows(*row, 1);
 }
 
 void StructureView::onDoubleClick(const QModelIndex& index)
