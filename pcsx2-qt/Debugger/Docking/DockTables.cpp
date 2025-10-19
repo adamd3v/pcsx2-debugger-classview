@@ -51,7 +51,7 @@ const std::map<std::string, DockTables::DebuggerViewDescription> DockTables::DEB
 	DEBUGGER_VIEW(RegisterView, QT_TRANSLATE_NOOP("DebuggerView", "Registers"), TOP_LEFT),
 	DEBUGGER_VIEW(SavedAddressesView, QT_TRANSLATE_NOOP("DebuggerView", "Saved Addresses"), BOTTOM_MIDDLE),
 	DEBUGGER_VIEW(StackView, QT_TRANSLATE_NOOP("DebuggerView", "Stack"), BOTTOM_MIDDLE),
-	DEBUGGER_VIEW(StructureView, QT_TRANSLATE_NOOP("DebuggerView", "Structures"), BOTTOM_MIDDLE),
+	DEBUGGER_VIEW(StructureTreeView, QT_TRANSLATE_NOOP("DebuggerView", "Structures"), BOTTOM_MIDDLE),
 	DEBUGGER_VIEW(ThreadView, QT_TRANSLATE_NOOP("DebuggerView", "Threads"), BOTTOM_MIDDLE),
 };
 
@@ -82,7 +82,7 @@ const std::vector<DockTables::DefaultDockLayout> DockTables::DEFAULT_DOCK_LAYOUT
 			{"RegisterView", DefaultDockGroup::TOP_LEFT},
 			{"FunctionTreeView", DefaultDockGroup::TOP_LEFT},
 			{"MemorySearchView", DefaultDockGroup::TOP_LEFT},
-			{"StructureView", DefaultDockGroup::BOTTOM}
+			{"StructureTreeView", DefaultDockGroup::BOTTOM}
 		},
 		.toolbars = {
 			"toolBarDebug",
@@ -114,7 +114,7 @@ const std::vector<DockTables::DefaultDockLayout> DockTables::DEFAULT_DOCK_LAYOUT
 			{"RegisterView", DefaultDockGroup::TOP_LEFT},
 			{"FunctionTreeView", DefaultDockGroup::TOP_LEFT},
 			{"MemorySearchView", DefaultDockGroup::TOP_LEFT}, 
-			{"StructureView", DefaultDockGroup::BOTTOM}
+			{"StructureTreeView", DefaultDockGroup::BOTTOM}
 		},
 		.toolbars = {
 			"toolBarDebug",
