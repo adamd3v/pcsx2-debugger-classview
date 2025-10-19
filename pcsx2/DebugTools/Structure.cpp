@@ -15,41 +15,39 @@ Structure::Structure()
 
 void CStructure::addStructure(const Structure& structure)
 {
-	std::string fullClassName;
-
-	if (&structure == nullptr)
-		return;
-
-	if (structure.st_class.empty())
-		return;
-
-	if (!structure.st_namespace.empty())
-	{
-		fullClassName.append(structure.st_namespace);
-		fullClassName.append("::");
-	}
-
-	fullClassName.append(structure.st_class);
-
+	std::string fullClassName = getFullClassName(structure);
 	s_structureMap[fullClassName] = structure;
 }
 
 void CStructure::removeStructure(const Structure& structure)
 {
-	std::string fullClassName;
+	std::string fullClassName = getFullClassName(structure);
+	s_structureMap.erase(fullClassName);
+}
 
-	if (&structure == nullptr)
+void CStructure::addField(Structure& structure, const Structure::Field& field)
+{
+	if (&field == nullptr)
 		return;
 
-	if (!structure.st_namespace.empty())
+	structure.fields.push_back(field);
+}
+
+void CStructure::removeField(Structure& structure, std::string name)
+{
+	if (name.empty())
+		return;
+
+	for (auto i = structure.fields.begin(); i != structure.fields.end(); i++)
 	{
-		fullClassName.append(structure.st_namespace);
-		fullClassName.append("::");
+		auto field = *i;
+
+		if (field.name.compare(name))
+		{
+			structure.fields.erase(i);
+			return;
+		}
 	}
-
-	fullClassName.append(structure.st_class);
-
-	s_structureMap.erase(fullClassName);
 }
 
 void CStructure::assignAddress(Structure& structure, const u32 address)
@@ -80,7 +78,35 @@ std::vector<Structure> CStructure::getStructures()
 	return structures;
 }
 
+std::vector<Structure::Field> CStructure::getFields(const Structure& structure)
+{
+	std::vector<Structure::Field> fields;
+
+	for (auto pair : s_structureMap)
+		fields.insert(fields.begin(), pair.second.fields.begin(), pair.second.fields.end());
+
+	return fields;
+}
+
 bool CStructure::isAddressValid(const u32 address)
 {
 	return true;
+}
+
+std::string CStructure::getFullClassName(const Structure& structure)
+{
+	std::string fullClassName;
+
+	if (&structure == nullptr)
+		return "";
+
+	if (!structure.st_namespace.empty())
+	{
+		fullClassName.append(structure.st_namespace);
+		fullClassName.append("::");
+	}
+
+	fullClassName.append(structure.st_class);
+
+	return fullClassName;
 }
