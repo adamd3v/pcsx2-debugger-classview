@@ -552,9 +552,7 @@
     <ClInclude Include="Debugger\DebuggerSettingsManager.h">
       <Filter>Debugger</Filter>
     </ClInclude>
-    <ClInclude Include="Debugger\Structures\Fields\StructureFieldView.h">
-      <Filter>Debugger\Structures\Fields</Filter>
-    </ClInclude>
+    <ClInclude Include="Debugger\Structures\StructureFieldModel.h" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MainWindow.h" />
@@ -1059,5 +1057,8 @@
     <QtTs Include="Translations\pcsx2-qt_en.ts">
       <Filter>Translations</Filter>
     </QtTs>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Debugger\Structures\StructureFieldModel.cpp" />
   </ItemGroup>
 </Project>

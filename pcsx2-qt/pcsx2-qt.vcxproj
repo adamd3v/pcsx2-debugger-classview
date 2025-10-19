@@ -93,6 +93,7 @@
     <ClCompile Include="Debugger\Structures\StructureDialog.cpp" />
     <ClCompile Include="Debugger\Structures\StructureModel.cpp" />
     <ClCompile Include="Debugger\Structures\StructureView.cpp" />
+    <ClCompile Include="Debugger\Structures\StructureFieldModel.cpp" />
     <ClCompile Include="Debugger\SymbolTree\NewSymbolDialogs.cpp" />
     <ClCompile Include="Debugger\SymbolTree\SymbolTreeDelegates.cpp" />
     <ClCompile Include="Debugger\SymbolTree\SymbolTreeLocation.cpp" />
@@ -218,7 +219,7 @@
     <QtMoc Include="Debugger\Structures\StructureView.h" />
     <QtMoc Include="Debugger\Structures\StructureDialog.h" />
     <QtMoc Include="Debugger\Structures\StructureModel.h" />
-    <ClInclude Include="Debugger\Structures\Fields\StructureFieldView.h" />
+    <QtMoc Include="Debugger\Structures\StructureFieldModel.h" />
     <ClInclude Include="Settings\ControllerSettingWidgetBinder.h" />
     <QtMoc Include="Settings\FolderSettingsWidget.h" />
     <QtMoc Include="Settings\DebugAnalysisSettingsWidget.h" />
@@ -347,6 +348,7 @@
     <ClCompile Include="$(IntDir)Debugger\Structures\moc_StructureView.cpp" />
     <ClCompile Include="$(IntDir)Debugger\Structures\moc_StructureModel.cpp" />
     <ClCompile Include="$(IntDir)Debugger\Structures\moc_StructureDialog.cpp" />
+    <ClCompile Include="$(IntDir)Debugger\Structures\moc_StructureFieldModel.cpp" />
     <ClCompile Include="$(IntDir)GameList\moc_GameListModel.cpp" />
     <ClCompile Include="$(IntDir)GameList\moc_GameListRefreshThread.cpp" />
     <ClCompile Include="$(IntDir)GameList\moc_GameListWidget.cpp" />
