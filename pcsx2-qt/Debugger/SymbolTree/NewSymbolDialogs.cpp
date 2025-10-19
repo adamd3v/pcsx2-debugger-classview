@@ -364,8 +364,58 @@ void NewFunctionDialog::createSymbol()
 
 // *****************************************************************************
 
-NewGlobalVariableDialog::NewGlobalVariableDialog(DebugInterface& cpu, QWidget* parent)
+NewStructureDialog::NewStructureDialog(DebugInterface& cpu, QWidget* parent)
 	: NewSymbolDialog(GLOBAL_STORAGE | TYPE_FIELD, 1, cpu, parent)
+{
+	setWindowTitle("New Structure");
+}
+
+bool NewStructureDialog::parseUserInput()
+{
+	QString error_message;
+
+	m_cpu.GetSymbolGuardian().Read([&](const ccc::SymbolDatabase& database) {
+		m_name = parseName(error_message);
+
+		if (!error_message.isEmpty())
+			return;
+	});
+
+	updateErrorMessage(error_message);
+	return error_message.isEmpty();
+}
+
+void NewStructureDialog::createSymbol()
+{
+	if (!parseUserInput())
+		return;
+
+	QString error_message;
+	m_cpu.GetSymbolGuardian().ReadWrite([&](ccc::SymbolDatabase& database) {
+		ccc::Result<ccc::SymbolSourceHandle> source = database.get_symbol_source("User-Defined");
+
+		if (!source.success())
+		{
+			error_message = tr("Cannot create symbol source.");
+			return;
+		}
+
+		ccc::Result<ccc::DataType*> data_type = database.data_types.create_symbol(std::move(m_name), m_address, *source, nullptr);
+		if (!data_type.success())
+		{
+			error_message = tr("Cannot create symbol.");
+			return;
+		}
+	});
+
+	if (!error_message.isEmpty())
+		QMessageBox::warning(this, tr("Cannot Create Structure"), error_message);
+}
+
+// *****************************************************************************
+
+NewGlobalVariableDialog::NewGlobalVariableDialog(DebugInterface& cpu, QWidget* parent)
+	: NewSymbolDialog(GLOBAL_STORAGE, 1, cpu, parent)
 {
 	setWindowTitle(tr("New Global Variable"));
 }

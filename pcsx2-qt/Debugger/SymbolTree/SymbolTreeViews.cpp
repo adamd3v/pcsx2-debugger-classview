@@ -868,6 +868,85 @@ void FunctionTreeView::onNewButtonPressed()
 
 // *****************************************************************************
 
+StructureTreeView::StructureTreeView(const DebuggerViewParameters& parameters) 
+	: SymbolTreeView(
+		ALLOW_GROUPING | ALLOW_SORTING_BY_IF_TYPE_IS_KNOWN | ALLOW_TYPE_ACTIONS,
+		1,
+		parameters
+	)
+{
+}
+
+StructureTreeView::~StructureTreeView() = default;
+
+std::vector<SymbolTreeView::SymbolWork> StructureTreeView::getSymbols(
+	const QString& filter, const ccc::SymbolDatabase& database)
+{
+	std::vector<SymbolTreeView::SymbolWork> symbols;
+
+	for (const ccc::DataType& data_type : database.data_types)
+	{
+		if (!data_type.address().valid())
+			continue;
+
+		QString name = QString::fromStdString(data_type.name());
+		if (!testName(name, filter))
+			continue;
+
+		SymbolWork& work = symbols.emplace_back();
+
+		work.name = std::move(name);
+		work.descriptor = ccc::FUNCTION;
+		work.symbol = &data_type;
+
+		work.module_symbol = database.modules.symbol_from_handle(data_type.module_handle());
+		work.section = database.sections.symbol_overlapping_address(data_type.address());
+		work.source_file = nullptr;
+	}
+
+	return symbols;
+}
+
+std::unique_ptr<SymbolTreeNode> StructureTreeView::buildNode(
+	SymbolWork& work, const ccc::SymbolDatabase& database) const
+{
+	const ccc::DataType& data_type = static_cast<const ccc::DataType&>(*work.symbol);
+
+	std::unique_ptr<SymbolTreeNode> node = std::make_unique<SymbolTreeNode>();
+	node->name = std::move(work.name);
+	node->location = SymbolTreeLocation(SymbolTreeLocation::MEMORY, data_type.address().value);
+	node->size = data_type.size();
+	node->symbol = ccc::MultiSymbolHandle(data_type);
+
+	return node;
+}
+
+void StructureTreeView::configureColumns()
+{
+	m_ui.treeView->setColumnHidden(SymbolTreeModel::NAME, false);
+	m_ui.treeView->setColumnHidden(SymbolTreeModel::TYPE, false);
+	m_ui.treeView->setColumnHidden(SymbolTreeModel::SIZE, false);
+	m_ui.treeView->setColumnHidden(SymbolTreeModel::VALUE, false);
+	m_ui.treeView->setColumnHidden(SymbolTreeModel::LIVENESS, true);
+	m_ui.treeView->setColumnHidden(SymbolTreeModel::LOCATION, true);
+
+	m_ui.treeView->header()->setSectionResizeMode(SymbolTreeModel::NAME, QHeaderView::Stretch);
+	m_ui.treeView->header()->setSectionResizeMode(SymbolTreeModel::TYPE, QHeaderView::Stretch);
+	m_ui.treeView->header()->setSectionResizeMode(SymbolTreeModel::VALUE, QHeaderView::Stretch);
+
+	m_ui.treeView->header()->setStretchLastSection(false);
+}
+
+void StructureTreeView::onNewButtonPressed()
+{
+	NewStructureDialog* dialog = new NewStructureDialog(cpu(), this);
+	dialog->setAttribute(Qt::WA_DeleteOnClose);
+	if (dialog->exec() == QDialog::Accepted)
+		reset();
+}
+
+// *****************************************************************************
+
 GlobalVariableTreeView::GlobalVariableTreeView(const DebuggerViewParameters& parameters)
 	: SymbolTreeView(
 		  ALLOW_GROUPING | ALLOW_SORTING_BY_IF_TYPE_IS_KNOWN | ALLOW_TYPE_ACTIONS | ALLOW_MANGLED_NAME_ACTIONS,

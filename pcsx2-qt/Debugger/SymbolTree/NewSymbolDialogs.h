@@ -104,6 +104,22 @@ protected:
 	u32 m_new_existing_function_size = 0;
 };
 
+class NewStructureDialog : public NewSymbolDialog
+{
+	Q_OBJECT
+
+public:
+	NewStructureDialog(DebugInterface& cpu, QWidget* parent = nullptr);
+
+protected:
+	bool parseUserInput() override;
+	void createSymbol() override;
+
+	std::string m_name;
+	u32 m_size = 0;
+	u32 m_address = 0;
+};
+
 class NewGlobalVariableDialog : public NewSymbolDialog
 {
 	Q_OBJECT

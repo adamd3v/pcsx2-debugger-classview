@@ -137,6 +137,25 @@ protected:
 	void onNewButtonPressed() override;
 };
 
+class StructureTreeView : public SymbolTreeView
+{
+	Q_OBJECT
+public:
+	explicit StructureTreeView(const DebuggerViewParameters& parameters);
+	virtual ~StructureTreeView();
+
+protected:
+	std::vector<SymbolWork> getSymbols(
+		const QString& filter, const ccc::SymbolDatabase& database) override;
+
+	std::unique_ptr<SymbolTreeNode> buildNode(
+		SymbolWork& work, const ccc::SymbolDatabase& database) const override;
+
+	void configureColumns() override;
+
+	void onNewButtonPressed() override;
+};
+
 class GlobalVariableTreeView : public SymbolTreeView
 {
 	Q_OBJECT
